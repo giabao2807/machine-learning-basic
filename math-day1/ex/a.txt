@@ -1,0 +1,53 @@
+chia hết cho 7
+
+z= anan-1...a1a0 =a0+a1.10+a2.10^2+....+an.10^n
+
+10^0 đồng dư 1 (mod7)
+10^1 đồng dư 3 (mod7)
+10^2 đồng dư 2 (mod7)
+10^3 đồng dư 6 (mod7)
+10^4 đồng dư 4 (mod7)
+
+t= 1.a0 + 3.a1 + 2.a2 +6.a3 +... 
+
+nếu t chia hết cho 7 -> z chia hết cho 7
+
+>ex: 287
+
+t= 7.1 + 8.3 + 2.2 = 35
+t=35 chia hết cho 7 => z=287 chia hết cho 7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======================
+
+chia hết cho 13
+
+z= anan-1...a1a0 =a0+a1.10+a2.10^2+....+an.10^n
+
+10^0 đồng dư 1 (mod 13)
+10^1 đồng dư -3 (mod 13)
+10^2 đồng dư -4 (mod 13)
+10^3 đồng dư -1 (mod 13)
+10^4 đồng dư 3(mod 13)
+10^5 đồng dư 4 (mod 13)
+
+t= 1.a0 - 3.a1 - 4.a2 -1.a3 + 3a4 + 4a5 + .... 
+
+nếu t chia hết cho 13 -> z chia hết cho 13
+
+>ex: 546
+
+t= 1.6  - 3.4 - 4.5 = -26
+t= -26 chia hết cho 13 nên z=546 chia hết cho 13

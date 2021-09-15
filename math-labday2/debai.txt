@@ -1,0 +1,3 @@
+1. Viết CT tính a^m mod n
+2. Viết CT tính định thức ma trận A
+3. Viết CT tính A^-1 của ma trận A
