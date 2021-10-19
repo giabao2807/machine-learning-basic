@@ -21,7 +21,11 @@ def myGradientDescent(w_init,grad , alpha, loop=1000,esilon=1e-4):
         w.append(w_new)
     return (w,i)
 
+
+
+
 if __name__=='__main__':
+    
     #dataset
     X=np.random.rand(1000,1)
     y=4 + 3*X + .2* np.random.randn(1000,1) #noise added
@@ -51,3 +55,9 @@ if __name__=='__main__':
     plt.plot(x0,y0,'y',linewidth=2) #the fitting line
     plt.axis([0,1,0,10])
     plt.show()
+
+
+
+
+
+
