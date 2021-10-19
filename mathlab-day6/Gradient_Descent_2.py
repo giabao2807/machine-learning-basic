@@ -11,9 +11,9 @@ def l(w):
     return .5/N*np.linalg.norm(Xbar.dot(w)-y,2)**2
 
 def myGradientDescent(w_init,grad , alpha, loop=1000,esilon=1e-4):
-    w=[w_init]
+    w = [w_init]
     for i in range(loop):
-        w_new = w[-1] - alpha(grad(w[-1]))
+        w_new = w[-1] - alpha*(grad(w[-1]))
         if np.linalg.norm(grad(w_new))/len(w_new) < esilon:
             break
         w.append(w_new)
@@ -29,7 +29,7 @@ if __name__=='__main__':
     #Gradient descent
     w_init= np.array([[2],[1]])
     (w1,it1) = myGradientDescent(w_init,grad,0.01)
-    print('Phuong phap Gradient Descent: w=',w1[-1].T,'.\ after %d iterations.' %(it1+1,',\n l =%f ' % l (w1[-1])))
+    print('Phuong phap Gradient Descent: w= ',w1[-1].T, '.\n after %d iterations.' %(it1+1),',\n l =%f ' % l (w1[-1]))
 
     #Linear regression
     A=np.dot(Xbar.T,Xbar)
@@ -45,7 +45,7 @@ if __name__=='__main__':
     y0= w_0 + w_1 * x0
 
     #Draw the fitting line
-    plt.plot(x.T,y.T,'b')
+    plt.plot(X.T,y.T,'b.') #data
     plt.plot(x0,y0,'y',linewidth=2) #the fitting line
     plt.axis([0,1,0,10])
     plt.show()
