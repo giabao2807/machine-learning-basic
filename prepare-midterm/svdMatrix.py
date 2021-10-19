@@ -108,6 +108,7 @@ if __name__ == '__main__':
     U, D, V = my_svd(A)
 
     print('Matrix A: \n %s \n' % A)
+    
     print('Matrix U: \n %s \n' % U)
     print('Matrix D: \n %s \n' % D)
     print('Matrix V: \n %s \n' % V)
