@@ -76,7 +76,7 @@ def find_next(A, B, b, temp_index, index_list_B):
 def Solve():
     b = np.mat([1, 2])
     A = np.mat([[1, 2, 1, 0], [1, 1, 0, 1]])
-    C = np.mat([-5,-8, 0, 0]).T
+    C = np.mat([-5, -8, 0, 0]).T
     solve_stdLP(A, C, b)
 
 
