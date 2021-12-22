@@ -51,6 +51,7 @@ def ProductOfDivisors(n):
     return n**(NumberOfDivisors(n)/2)
 
 
+# So HoanHao < n
 def FindPerfectNumber(n):
     rs = []
     for i in range(2, n+1):
@@ -64,6 +65,7 @@ def FindPerfectNumber(n):
     return rs
 
 
+# Eratosthenes
 def SieveOfEratosthenes(n):
     indexs = np.arange(2, n+1)
     nums = np.ones_like(indexs, dtype=bool)
@@ -73,6 +75,7 @@ def SieveOfEratosthenes(n):
     return indexs[nums]
 
 
+# BCNN
 def GreatestCommonDivisor(a, b):
     if a < b:
         return GreatestCommonDivisor(b, a)
@@ -81,8 +84,9 @@ def GreatestCommonDivisor(a, b):
     return GreatestCommonDivisor(b, r)
 
 
+# UCLN
 def LeastCommonMutiple(a, b):
-    return a*b//GreatestCommonDivisor(a,b)
+    return a*b//GreatestCommonDivisor(a, b)
 
 
 def EulerTotientFunction(n):
@@ -90,7 +94,21 @@ def EulerTotientFunction(n):
     """
     factors = PrimeFactorization(n)
     prod = n
-    for prime,power in factors:
-        prod*=(1-1/prime)
+    for prime, power in factors:
+        prod *= (1-1/prime)
     return int(prod)
 
+
+if __name__ == '__main__':
+    n = 100
+    print(EulerTotientFunction(n))
+    print(LeastCommonMutiple(2, 3))
+    print(GreatestCommonDivisor(2, 3))
+    print(SieveOfEratosthenes(n))
+    print(FindPerfectNumber(n))
+    print('***************')
+    print(PrimeFactorization(n))
+    print('***************')
+    print(ProductOfDivisors(n))
+    print(NumberOfDivisors(n))
+    print(SumOfDivisors(n))
