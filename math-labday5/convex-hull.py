@@ -1,38 +1,57 @@
-import random
 import numpy as np
+from matplotlib import pyplot as plt
 
 
-def RightTurn(p1, p2, p3):
-    if (p3[1]-p1[1])*(p2[0]-p1[0]) >= (p2[1]-p1[1])*(p3[0]-p1[0]):
-        return False
-    return True
+def convex_hull(points):
+    temp_P = np.unique(points, axis=0)
+    dtype = [('x', 'f8'), ('y', 'f8')]
+    smallest_index = np.argsort(
+        np.array([(_[0], _[1]) for _ in temp_P], dtype=dtype), order=('y', 'x'))[0]
+
+    P = temp_P - temp_P[smallest_index]
+    H = [P[smallest_index]]
+    P = np.vstack((P[:smallest_index], P[smallest_index+1:]))
+    lengths = np.linalg.norm(P, axis=1)
+    angles = np.arccos(P[:, 0]/lengths)
+    sorted_angle_indices = np.argsort(angles)
+    for i in sorted_angle_indices:
+        H.append(P[i])
+        while len(H) >= 3:
+
+            u = H[-2]-H[-3]
+            v = H[-1]-H[-2]
+            if np.cross(u, v) < 0:
+                H.pop(-2)
+            elif np.cross(u, v) == 0:
+                if np.linalg.norm(H[-1]-H[-3]) < np.linalg.norm(H[-2]-H[-3]):
+                    H.pop(-1)
+                else:
+                    H.pop(-2)
+            else:
+                break
+    while len(H) >= 3:
+        u = H[-1]-H[-2]
+        v = H[0] - H[-1]
+        if np.cross(u, v) < 0:
+            H.pop(-1)
+        else:
+            break
+    H = np.array(H)
+    H = H+temp_P[smallest_index]
+    return H
 
 
-def convexHull(P):
-    P.sort()
-    L_upper = [P[0], P[1]]
-    for i in range(2, len(P)):
-        L_upper.append(P[i])
-        while len(L_upper) > 2 and not RightTurn(L_upper[-1], L_upper[-2], L_upper[-3]):
-            del L_upper[-2]
-    L_lower = [P[-1], P[-2]]
-    for i in range(len(P)-3, -1, -1):
-        L_lower.append(P[i])
-        while len(L_lower) > 2 and not RightTurn(L_lower[-1], L_lower[-2], L_lower[-3]):
-            del L_lower[-2]
-    del L_lower[0]
-    del L_lower[-1]
-    L = L_upper + L_lower		# Dãy bao bọc cuối cùng
-    return np.array(L)
+points = np.array([[3, 4],
+                  [5, 3],
+                  [6, 5],
+                  [7, 6],
+                  [8, 7],
+                  [4, 9],
+                  [3, 8],
+                  [4, 8],
+                  [7, 10],
+                  [7, 4]])
+rs = convex_hull(points)
 
-
-if __name__ == '__main__':
-    points = np.array([[1, 2],
-                       [2, 4],
-                       [3, 5],
-                       [4, 3],
-                       [5, 4],
-                       [6, 1],
-                       [7, 3]])
-    c = convexHull(points)
-    print(c)
+print("Day bao loi cuoi cung gom: ")
+print(rs)

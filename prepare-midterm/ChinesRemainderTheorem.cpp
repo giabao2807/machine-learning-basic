@@ -29,11 +29,11 @@ int findMinX(int num[], int rem[], int k)
     int prod = 1, result = 0;
     for (int i = 0; i < k; i++)
     {
-        prod *= num[i]; //Find X = m1*m2*m3...*mk
+        prod *= num[i]; // Find X = m1*m2*m3...*mk
     }
     for (int i = 0; i < k; i++)
     {
-        int p = prod / num[i]; //Find X1, X2, X3
+        int p = prod / num[i]; // Find X1, X2, X3
         result += rem[i] * p * modInverseVer1(p, num[i]);
     }
     return result % prod;
@@ -41,15 +41,16 @@ int findMinX(int num[], int rem[], int k)
 
 int main()
 {
-    int num[] = {3, 4, 5};
-    int rem[] = {2, 3, 1};
+    int num[] = {2, 3, 5};
+    int rem[] = {3, 5, 7};
     int k = sizeof(num) / sizeof(num[0]);
     long X = 1;
     for (int i = 0; i < k; i++)
     {
         X *= num[i];
     }
+    cout << "\n\n\n\n";
     cout << "x = " << findMinX(num, rem, k) << "(mod " << X << ")";
-    cout << "\n";
+    cout << "\n\n\n";
     return 0;
 }

@@ -99,16 +99,24 @@ def EulerTotientFunction(n):
     return int(prod)
 
 
+def PrimeFactorization(n):
+    if n <= 1 or (A := int(n)) != n:
+        raise ValueError
+    factors = []
+    i = 2
+    while A > 1 and i <= n:
+        power = 0
+        while A > 1 and A % i == 0:
+            power += 1
+            A = A//i
+        if power > 0:
+            factors.append((i, power))
+        i += 1
+    return factors
+
+
 if __name__ == '__main__':
-    n = 100
-    print(EulerTotientFunction(n))
-    print(LeastCommonMutiple(2, 3))
-    print(GreatestCommonDivisor(2, 3))
-    print(SieveOfEratosthenes(n))
-    print(FindPerfectNumber(n))
-    print('***************')
-    print(PrimeFactorization(n))
-    print('***************')
-    print(ProductOfDivisors(n))
-    print(NumberOfDivisors(n))
-    print(SumOfDivisors(n))
+    n = 26000
+    print('\n\n\n********Phân tích hợp số*******\n')
+    print(n, '=', PrimeFactorization(n))
+    print('*******************************\n\n\n')

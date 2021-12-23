@@ -27,7 +27,7 @@ def CholeU(A):
 
 
 if __name__ == "__main__":
-    A = np.array([[2, 1, 0], [1, 2, 1], [0, 1, 2]])
+    A = np.array([[5, -2], [-2, 7]])
     L = CholeL(A)
     U = CholeU(L)
     print("Ma tran A:")

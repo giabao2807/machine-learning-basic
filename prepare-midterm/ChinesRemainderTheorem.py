@@ -18,9 +18,7 @@ def findMinX(num, rem, k):
 
 if __name__ == "__main__":
     # Driver Code
-    num = [3, 4, 5]
-    rem = [2, 3, 1]
+    num = [2, 3, 5]
+    rem = [3, 5, 7]
     k = len(num)
     print("x is", findMinX(num, rem, k))
-
-    # This code is contributed by mits

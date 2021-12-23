@@ -37,24 +37,22 @@ def GrahamScan(P):
 
 def main():
 
-    try:
-        N = int(sys.argv[1])
-    except:
-        N = int(input("Nhap N: "))
-
-    P = [(np.random.randint(0, 50), np.random.randint(0, 50))
-         for i in range(N)]
+    P = np.array([[3, 4],
+                  [5, 3],
+                  [6, 5],
+                  [7, 6],
+                  [8, 7],
+                  [4, 9],
+                  [3, 8],
+                  [4, 8],
+                  [7, 10],
+                  [7, 4]])
 
     L = GrahamScan(P)
     P = np.array(P)
 
-    # Plot the computed Convex Hull:
-    plt.figure()
-    plt.plot(L[:, 0], L[:, 1], 'b-', picker=5)
-    plt.plot([L[-1, 0], L[0, 0]], [L[-1, 1], L[0, 1]], 'b-', picker=5)
-    plt.plot(P[:, 0], P[:, 1], ".r")
-    plt.axis('off')
-    plt.show()
+    print("Day bao loi cuoi cung gom: ")
+    print(L)
 
 
 if __name__ == '__main__':

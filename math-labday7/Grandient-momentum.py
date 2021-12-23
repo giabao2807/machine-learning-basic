@@ -5,12 +5,11 @@ import matplotlib.pyplot as plt
 
 def grad(x):  # f'(x)
 
-    return 2*x + 10*np.cos(x)
+    return 2*(np.exp(x) + 3*x - 10)*(np.exp(x)+3) + 2*x
 
 
 def cost(x):  # f(x)
-
-    return x**2 + 10*np.sin(x)
+    return (np.exp(x) + 3*x-10)**2 + x**2
 
 
 def GD_momentum(theta_init, alpha=0.1, beta=0.9, Loop=1000):
@@ -32,21 +31,6 @@ def GD_momentum(theta_init, alpha=0.1, beta=0.9, Loop=1000):
     return (theta, it)
 
 
-def myGD1(x0, alpha=0.1, gra=1e-3, loop=1000):
-
-    x = [x0]
-
-    for it in range(loop):
-
-        x_new = x[-1] - alpha*grad(x[-1])
-
-        if abs(grad(x_new)) < gra:
-
-            break
-
-        x.append(x_new)
-
-    return (x, it)
 
 
 if __name__ == '__main__':
@@ -59,14 +43,7 @@ if __name__ == '__main__':
 
     plt.axis([-5, 5, -10, 15])
 
-    (x1, it1) = myGD1(5, 0.1)
-
-    print('GD_Solution x3 = %f, cost = %f, obtained after %d iterations' %
-          (x1[-1], cost(x1[-1]), it1))
-
-    plt.plot(x1[-1], cost(x1[-1]), 'r X')
-
-    (x2, it2) = GD_momentum(5, 0.1, beta=0.9)
+    (x2, it2) = GD_momentum(1.5, 0.1)
 
     print('Momentum_Solution x1 = %f, cost = %f, obtained after %d iterations' % (
         x2[-1], cost(x2[-1]), it2))
